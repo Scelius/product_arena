@@ -54,24 +54,38 @@ class _LoginScreenState extends State<LoginScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset('images/productalogo.png'),
-          SizedBox(
+          const SizedBox(
             height: 44.0,
           ),
-          TextField(
+          const TextField(
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               hintText: "E-mail",
             ),
           ),
           const SizedBox(
             height: 26.0,
           ),
-          TextField(
+          const TextField(
             obscureText: true,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               hintText: "Password",
             ),
-          )
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          Container(
+            width: double.infinity,
+            child: RawMaterialButton(
+              fillColor: Color(0xff04E762),
+              onPressed: () {},
+              child: const Text(
+                "Log In",
+                style: TextStyle(fontSize: 17),
+              ),
+            ),
+          ),
         ],
       ),
     );
