@@ -18,12 +18,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/* 
-  ToDo list:
-  Step 1: creating the main layout of the app (UI only)
-
-  */
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -77,6 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
         print("No user found for that email");
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
       }
     }
     return user;
@@ -85,8 +81,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     //Texteditingcontroller
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passwordController = TextEditingController();
+    final _emailController = TextEditingController();
+    final _passwordController = TextEditingController();
+    final GlobalKey<FormState> _key = GlobalKey<FormState>();
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
